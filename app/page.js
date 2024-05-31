@@ -1,65 +1,68 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
+import { useQuery, gql } from '@apollo/client';
+
+const GET_PROPERTIES = gql`
+  query GetProperties($skip: Int, $take: Int) {
+    properties(skip: $skip, take: $take) {
+      id
+      project_name
+      title
+      property_description
+      property_type
+      price
+      bedroom
+      area
+      image1
+      image2
+      image3
+      image4
+      image5
+    }
+  }
+`;
 
 export default function Properties() {
-  const [properties, setProperties] = useState([]);
   const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const observerRef = useRef();
-  const limit = 30; // Number of items per page
 
-  useEffect(() => {
-    const loadProperties = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`/api/property?page=${page}&limit=${limit}`);
-        const data = await res.json();
+  const { loading, error, data, fetchMore } = useQuery(GET_PROPERTIES, {
+      variables: { skip: 0, take: 30 }
+  });
 
-        setProperties((prev) => [...prev, ...data.properties]);
-        console.log('properties', properties);
-        setHasMore(data.properties.length === limit);
-      } catch (error) {
-        console.error('Error fetching properties:', error);
-      }
-      setLoading(false);
-    };
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
-    loadProperties();
-  }, [page]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore) {
-          setPage((prev) => prev + 1);
-        }
+  const handleLoadMore = () => {
+    fetchMore({
+      variables: {
+        skip: data.properties.length,
       },
-      { threshold: 1.0 }
-    );
-
-    if (observerRef.current) {
-      observer.observe(observerRef.current);
-    }
-
-    return () => {
-      if (observerRef.current) {
-        observer.unobserve(observerRef.current);
-      }
-    };
-  }, [hasMore]);
+      updateQuery: (prevResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prevResult;
+        return {
+          ...prevResult,
+          properties: [
+            ...prevResult.properties,
+            ...fetchMoreResult.properties,
+          ],
+        };
+      },
+    });
+    setPage(page + 1);
+  };
 
   return (
     <div>
-      <h1>Properties</h1>
+      <h2>Properties</h2>
       <ul>
-        {properties.map((property) => (
-          <li key={property.id}>{property.title}</li>
+        {data.properties.map((property) => (
+          <li key={property.id}>
+            {property.title} - {property.price}
+          </li>
         ))}
       </ul>
-      {loading && <p>Loading...</p>}
-      <div ref={observerRef}></div>
+      <button onClick={handleLoadMore}>Load More</button>
     </div>
   );
 }
