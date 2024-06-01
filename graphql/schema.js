@@ -18,7 +18,7 @@ const typeDefs = gql`
     }
 
     type Query {
-        properties(skip: Int, take: Int): [Property]
+        properties(property_type: String, minPrice: String, maxPrice: String, bedroom: String, area: String, skip: Int, take: Int): [Property]
     }
 `;
 
