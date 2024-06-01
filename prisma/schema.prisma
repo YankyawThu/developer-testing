@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
@@ -22,4 +22,8 @@ model property {
   image3               String? @db.VarChar(255)
   image4               String? @db.VarChar(255)
   image5               String? @db.VarChar(255)
+
+  @@index([bedroom], map: "idx_bedroom")
+  @@index([property_type], map: "idx_propertyType")
+  @@index([area], map: "idx_area")
 }
