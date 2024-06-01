@@ -20,27 +20,31 @@ const Filter = ({filter, setFilter, submit}) => {
     };
 
     return (
-        <>
-            <select name='type' value={filter.propertyType} onChange={handleTypeFilterChange}>
-                <option value="">Any</option>
-                <option value={"sale"}>Sale</option>
-                <option value={"rent"}>Rent</option>
-            </select>
-            <input name="minPrice" value={filter.minPrice} onChange={handleMinPriceFilterChange} />
-            <input name="maxPrice" value={filter.maxPrice} onChange={handleMaxPriceFilterChange} />
-            <select name='bedroom' value={filter.bedroom} onChange={handleBedroomFilterChange}>
-                <option value="">Any</option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-            </select>
-            <select name='area' value={filter.area} onChange={handleAreaFilterChange}>
-                <option value="">Any</option>
-                <option value={1}>800 between 1000</option>
-                <option value={2}>1000 between 1200</option>
-            </select>
-            <button onClick={submit}>Search</button>
-        </>
+        <div>
+            <div className="mt-7">
+                <select name='type' value={filter.propertyType} onChange={handleTypeFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none">
+                    <option value="">Select type</option>
+                    <option value={"sale"}>Sale</option>
+                    <option value={"rent"}>Rent</option>
+                </select>
+                <input name="minPrice" value={filter.minPrice} onChange={handleMinPriceFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none" placeholder="Enter lowest price" />
+                <input name="maxPrice" value={filter.maxPrice} onChange={handleMaxPriceFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none" placeholder="Enter highest price" />
+                <select name='bedroom' value={filter.bedroom} onChange={handleBedroomFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none">
+                    <option value="">Select bedroom</option>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                </select>
+                <select name='area' value={filter.area} onChange={handleAreaFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none">
+                    <option value="">Select area</option>
+                    <option value={1}>800 between 1000</option>
+                    <option value={2}>1000 between 1200</option>
+                </select>
+            </div>
+            <div className="flex flex-col items-center my-3">
+                <button onClick={submit} className="bg-blue-600 text-white py-3 px-4 rounded-md">Search</button>
+            </div>
+        </div>
     )
 }
 

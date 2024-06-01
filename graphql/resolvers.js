@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 const resolvers = {
     Query: {
-        properties: async (_, { property_type, minPrice, maxPrice, bedroom, area, skip = 0, take = 30 }) => {
+        properties: async (_, { property_type, minPrice, maxPrice, bedroom, area, skip = 0, take = 10 }) => {
             const filters = {}
             if (property_type) filters.property_type = property_type;
             if (minPrice) filters.price = { ...filters.price, gte: minPrice };
