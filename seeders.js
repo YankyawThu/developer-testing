@@ -40,7 +40,10 @@ CREATE TABLE IF NOT EXISTS property (
   image2 VARCHAR(255),
   image3 VARCHAR(255),
   image4 VARCHAR(255),
-  image5 VARCHAR(255)
+  image5 VARCHAR(255),
+  INDEX idx_propertyType (property_type),
+  INDEX idx_bedroom (bedroom),
+  INDEX idx_area (area)
 );
 
 ${insertPropertyQuery}
