@@ -44,8 +44,8 @@ export default function Properties() {
     refetch({ property_type: filter.propertyType, minPrice: filter.minPrice, maxPrice: filter.maxPrice, bedroom: filter.bedroom, area: filter.area, skip: 0, take: limit });
   }
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) return <div className='loading flex flex-col items-center justify-center h-screen'>Loading...</div>;
+  if (error) return <div className='loading flex flex-col items-center justify-center h-screen'>Error: {error.message}</div>;
 
   const handleLoadMore = () => {
     fetchMore({
@@ -77,17 +77,16 @@ export default function Properties() {
           <Filter filter={filter} setFilter={setFilter} submit={submit} />
         </div>
       </div>
-      <div className='mt-10 mx-8'>
+      <div className='mt-10 md:mx-8'>
         <div className='text-lg font-bold'>Rental properties in Thailand</div>
         <div className='text-sm text-gray-500'>Explore your short and long term rental options across different markets in Thailand</div>
-        <div className='my-5 flex flex-col'>
+        <div className='flex flex-col lg:grid property-list gap-7 my-5'>
           {data.properties.map(property => (
             <Property property={property} />
           ))}
         </div>
         <div className='flex flex-col items-center'>
-          {loading && <>Loading...</>}
-          <button onClick={handleLoadMore} className='py-2 px-3 border-2 border-blue-600 rounded-lg'>Load More</button>
+          <button onClick={handleLoadMore} className='py-2 px-3'>Load More</button>
         </div>
       </div>
     </div>

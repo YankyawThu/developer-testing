@@ -21,21 +21,21 @@ const Filter = ({filter, setFilter, submit}) => {
 
     return (
         <div>
-            <div className="mt-7">
-                <select name='type' value={filter.propertyType} onChange={handleTypeFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none">
+            <div className="flex flex-wrap justify-center mt-6">
+                <select name='type' value={filter.propertyType} onChange={handleTypeFilterChange} className="m-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none">
                     <option value="">Select type</option>
                     <option value={"sale"}>Sale</option>
                     <option value={"rent"}>Rent</option>
                 </select>
-                <input name="minPrice" value={filter.minPrice} onChange={handleMinPriceFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none" placeholder="Enter lowest price" />
-                <input name="maxPrice" value={filter.maxPrice} onChange={handleMaxPriceFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none" placeholder="Enter highest price" />
-                <select name='bedroom' value={filter.bedroom} onChange={handleBedroomFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none">
+                <input name="minPrice" value={filter.minPrice} onChange={handleMinPriceFilterChange} className="m-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none" placeholder="Enter lowest price" />
+                <input name="maxPrice" value={filter.maxPrice} onChange={handleMaxPriceFilterChange} className="m-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none" placeholder="Enter highest price" />
+                <select name='bedroom' value={filter.bedroom} onChange={handleBedroomFilterChange} className="m-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none">
                     <option value="">Select bedroom</option>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
                     <option value={3}>3</option>
                 </select>
-                <select name='area' value={filter.area} onChange={handleAreaFilterChange} className="mx-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none">
+                <select name='area' value={filter.area} onChange={handleAreaFilterChange} className="m-1 text-gray-400 text-sm p-3 rounded-md focus:outline-none">
                     <option value="">Select area</option>
                     <option value={1}>800 between 1000</option>
                     <option value={2}>1000 between 1200</option>
