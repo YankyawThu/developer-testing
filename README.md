@@ -1,19 +1,35 @@
-Instructions...
+## Installation
 
-**- npm install**
+### Steps
 
-**- node seeders.js**
+1. Install node_modules
+    ```bash
+    npm install
+    ```
 
-To run on localhost or on docker, change DATABASE_URL in .env file to specific url
+2. Generate seeder file
+    ```bash
+    node seeders.js
+    ```
 
-And then run on docker. Note, before building, ports 3000 and 3306 must be available
+### To run on localhost or on docker, change DATABASE_URL in .env file to specific url
 
-**- docker-compose up --build**
+3. Run on docker. Note, before build, ports 3000 and 3306 must be available
+    ```bash
+    docker-compose up --build
+    ```
 
-Run on local then need to migrate database and seed with prisma, run below
+4. Run on local then need to migrate database and seed with prisma, run below
+    ```bash
+    npx prisma migrate dev --name add_indexes
+    ```
 
-**- npx prisma migrate dev --name add_indexes**
+5. Run seeder
+    ```bash
+    npm run seed
+    ```
 
-**- npm run seed**
-
-**- npm run dev**
+6. Run developement server
+    ```bash
+    npm run dev
+    ```
