@@ -3,19 +3,30 @@ import { CiLocationOn } from "react-icons/ci";
 import { FaBahtSign } from "react-icons/fa6";
 import { IoBedOutline } from "react-icons/io5";
 import { PiSquaresFourLight } from "react-icons/pi";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const Property = ({property}) => {
     return(
         <div className='flex flex-col md:flex-row md:my-0 border-1 rounded-lg shadow-md md:h-[210px]'>
             <div className='md:flex-none md:w-[230px]'>
                 <div>
-                    <Image src={property.image1} width={350} height={350} className='w-full h-[167px] rounded-tl-lg rounded-tr-lg md:rounded-tr-none' />
+                    <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+                        <SwiperSlide><Image src={property.image1} alt="image" width={350} height={350} className='w-full h-[250px] md:h-[167px] rounded-tl-lg rounded-tr-lg md:rounded-tr-none' /></SwiperSlide>
+                        <SwiperSlide><Image src={property.image2} alt="image" width={350} height={350} className='w-full h-[250px] md:h-[167px] rounded-tl-lg rounded-tr-lg md:rounded-tr-none' /></SwiperSlide>
+                        <SwiperSlide><Image src={property.image3} alt="image" width={350} height={350} className='w-full h-[250px] md:h-[167px] rounded-tl-lg rounded-tr-lg md:rounded-tr-none' /></SwiperSlide>
+                        <SwiperSlide><Image src={property.image4} alt="image" width={350} height={350} className='w-full h-[250px] md:h-[167px] rounded-tl-lg rounded-tr-lg md:rounded-tr-none' /></SwiperSlide>
+                        <SwiperSlide><Image src={property.image5} alt="image" width={350} height={350} className='w-full h-[250px] md:h-[167px] rounded-tl-lg rounded-tr-lg md:rounded-tr-none' /></SwiperSlide>
+                    </Swiper>
+                    {/* <Image src={property.image1} width={350} height={350} className='w-full h-[167px] rounded-tl-lg rounded-tr-lg md:rounded-tr-none' /> */}
                 </div>
                 <div className='grid grid-cols-4 gap-[1px] mt-[1px]'>
-                    <Image src={property.image2} width={50} height={50} className='w-full h-50 md:rounded-bl-lg' />
-                    <Image src={property.image3} width={50} height={50} className='w-full h-50' />
-                    <Image src={property.image4} width={50} height={50} className='w-full h-50' />
-                    <Image src={property.image5} width={50} height={50} className='w-full h-50' />
+                    <Image src={property.image2} alt="image" width={50} height={50} className='w-full h-50 md:rounded-bl-lg' />
+                    <Image src={property.image3} alt="image" width={50} height={50} className='w-full h-50' />
+                    <Image src={property.image4} alt="image" width={50} height={50} className='w-full h-50' />
+                    <Image src={property.image5} alt="image" width={50} height={50} className='w-full h-50' />
                 </div>
             </div>
             <div className='md:grow mx-3 flex flex-col w-auto py-2'>

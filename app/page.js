@@ -82,7 +82,7 @@ export default function Properties() {
         <div className='text-sm text-gray-500'>Explore your short and long term rental options across different markets in Thailand</div>
         <div className='flex flex-col lg:grid property-list gap-7 my-5'>
           {data.properties.map(property => (
-            <Property property={property} />
+            <Property key={property.id} property={property} />
           ))}
         </div>
         <div className='flex flex-col items-center'>
