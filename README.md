@@ -1,16 +1,15 @@
 Instructions...
 
-npm install
+- npm install
+- node seeders.js
 
-If init.sql has empty, run below
-node seeders.js
+To run on localhost or on docker, change DATABASE_URL in .env file to specific url
 
-to run on localhost or on docker, change DATABASE_URL in .env file to specific url
-
-and then if you want to run project on docker
+And then run on docker. Note, before building, ports 3000 and 3306 must be available
 docker-compose up --build
 
-run on local then migrate database with prisma, run below
-npx prisma migrate dev --name add_indexes
+Run on local then need to migrate database and seed with prisma, run below
+- npx prisma migrate dev --name add_indexes
+- npm run seed
 
 npm run dev

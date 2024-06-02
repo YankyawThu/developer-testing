@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies.
-RUN npm install --force
+RUN npm install
 
 # Copy the local code to the container image.
 COPY . .
