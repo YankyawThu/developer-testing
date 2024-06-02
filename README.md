@@ -1,5 +1,9 @@
+Instructions...
+
+npm install
+
 If init.sql has empty, run below
-node seeders.sql
+node seeders.js
 
 to run on localhost or on docker, change DATABASE_URL in .env file to specific url
 
